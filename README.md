@@ -282,56 +282,83 @@ These assets are used by the website's visual sections.
 
 ## Screenshots
 
-Screenshots documenting the development and final website are stored inside:
-
-```text
-screenshots/
-```
+Screenshots documenting the development process and final website are shown below.
 
 ### Laravel Development
 
-* `route-definitions.png`
-* `company-controller.png`
-* `node-npm-vite.png`
+#### Route Definitions
+
+![Route Definitions](screenshots/route-definitions.png)
+
+#### Company Controller
+
+![Company Controller](screenshots/company-controller.png)
+
+#### Node, NPM, and Vite
+
+![Node NPM Vite](screenshots/node-npm-vite.png)
 
 ### Project Structure
 
-* `vscode-project.png`
-* `laravel-folder-structure.png`
-* `blade-layout.png`
+#### VS Code Project
+
+![VS Code Project](screenshots/vscode-project.png)
+
+#### Laravel Folder Structure
+
+![Laravel Folder Structure](screenshots/laravel-folder-structure.png)
+
+#### Blade Layout
+
+![Blade Layout](screenshots/blade-layout.png)
 
 ### Website Pages
 
 #### Home
 
-* `home-page1.png`
-* `home-page2.png`
-* `home-page3.png`
-* `home-page4.png`
-* `home-page-5.png`
+![Home Page - 1](screenshots/home-page1.png)
+
+![Home Page - 2](screenshots/home-page2.png)
+
+![Home Page - 3](screenshots/home-page3.png)
+
+![Home Page - 4](screenshots/home-page4.png)
+
+![Home Page - 5](screenshots/home-page-5.png)
 
 #### About
 
-* `about-page1.png`
-* `about-page2.png`
-* `about-page3.png`
-* `about-page4.png`
-* `about-page5.png`
+![About Page - 1](screenshots/about-page1.png)
+
+![About Page - 2](screenshots/about-page2.png)
+
+![About Page - 3](screenshots/about-page3.png)
+
+![About Page - 4](screenshots/about-page4.png)
+
+![About Page - 5](screenshots/about-page5.png)
 
 #### Services
 
-* `services-page1.png`
-* `services-page2.png`
-* `services-page3.png`
-* `services-page4.png`
-* `services-page5.png`
+![Services Page - 1](screenshots/services-page1.png)
+
+![Services Page - 2](screenshots/services-page2.png)
+
+![Services Page - 3](screenshots/services-page3.png)
+
+![Services Page - 4](screenshots/services-page4.png)
+
+![Services Page - 5](screenshots/services-page5.png)
 
 #### Contact
 
-* `contact-page1.png`
-* `contact-page2.png`
+![Contact Page - 1](screenshots/contact-page1.png)
 
----
+![Contact Page - 2](screenshots/contact-page2.png)
+
+### GitHub Repository
+
+![GitHub Repository](screenshots/github-repository.png)
 
 ## Installation
 
