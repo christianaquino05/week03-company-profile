@@ -1,180 +1,275 @@
 # AURA & HORLOGE — Company Profile Website
 
-A Laravel-based company profile website developed for ITST 302.  
+A Laravel-based company profile website developed for **ITST 302 – Client-Server Technologies, Week 3 Laboratory Activity**.
+
 The project presents **AURA & HORLOGE**, a fictional luxury horology and leather atelier specializing in fine watches, bespoke handbags, authentication, restoration, and private collection services.
 
 ---
 
-## Project Overview
+## 1. Project Title
 
-**AURA & HORLOGE** is designed as a premium company profile website with a dark luxury aesthetic, gold accents, elegant typography, and responsive layouts.
+**Company Profile Website — AURA & HORLOGE**
 
-The website provides visitors with information about the company, its services, history, values, team, and contact information.
-
-### Main Pages
-
-- **Home** — Introduction to AURA & HORLOGE and its luxury offerings
-- **About** — Company history, philosophy, values, and team
-- **Services** — Overview of the company's six major services
-- **Contact** — Company information and private inquiry form
+A responsive multi-page company profile website developed using the Laravel MVC framework.
 
 ---
 
-## Features
+## 2. Introduction
 
-### Home Page
+A Company Profile Website is a website designed to introduce an organization, its identity, products or services, history, values, and contact information to potential customers and other visitors. It serves as an organization's digital presence and provides an accessible way for people to learn about the company.
 
-- Luxury hero section
-- Company introduction
-- Featured offerings
-- Call-to-action sections
-- Responsive layout
-- Custom visual design
+Businesses need a company profile website because it helps establish their online presence, communicate their brand identity, present their products or services, and provide customers with important contact information. A professional website can also improve credibility and make information available to visitors at any time.
 
-### About Page
+For this project, **AURA & HORLOGE** was created as a fictional luxury horology and leather atelier. The website presents the company's identity, history, mission, vision, values, services, team, and contact information through a responsive multi-page interface.
 
-- Company history
-- Mission and vision
-- Core values
-- Team section
-- Closing call-to-action
+The project was developed using Laravel's **Model-View-Controller (MVC)** architecture. Separate routes, a controller, Blade views, reusable layouts, reusable components, and custom CSS were implemented to demonstrate Laravel's approach to organized web application development.
 
-### Services Page
-
-The website presents six services:
-
-1. Private Watch Brokerage
-2. Bespoke Handbag Tailoring
-3. Forensic Authentication
-4. Watch Movement Servicing
-5. Handbag Restoration Spa
-6. Consignment & Liquidity
-
-### Contact Page
-
-- Atelier address
-- Email information
-- Phone number
-- Social media information
-- Private inquiry form
-- Inquiry category selection
+The project fulfills the Week 3 activity requirement of developing a professional company profile website while demonstrating Laravel routing, controllers, Blade templating, reusable components, responsive design, and Git version control.
 
 ---
 
-## Technologies Used
+## 3. Objectives
 
-- **Laravel**
-- **PHP**
-- **Blade Templates**
-- **CSS**
-- **Vite**
-- **Node.js**
-- **NPM**
-- **Git**
-- **GitHub**
+The objectives accomplished in this project are:
 
-### Frontend
-
-The website uses custom CSS for the overall visual design.
-
-Typography is provided through:
-
-- Cormorant Garamond
-- Inter
-
-The design uses a dark luxury color palette with ivory, charcoal, and gold accents.
+- Understand the basic Model-View-Controller (MVC) architecture used by Laravel.
+- Understand how Laravel processes client requests through its request lifecycle.
+- Create and manage multiple application routes.
+- Connect routes to controller methods.
+- Develop a controller responsible for handling company profile pages.
+- Build reusable Blade layouts and components.
+- Use Blade directives such as `@extends`, `@section`, `@yield`, and `@include`.
+- Organize pages using Laravel's standard project structure.
+- Create a responsive multi-page company profile website.
+- Apply custom CSS for a clean, professional, and consistent visual design.
+- Use Git to track development progress through meaningful commits.
+- Document the project using Markdown and GitHub.
+- Demonstrate the relationship between routes, controllers, and views in a Laravel application.
 
 ---
 
-## Laravel Architecture
+## 4. MVC Architecture
 
-The project follows Laravel's standard structure.
+### What is MVC?
 
-### Important Directories
+MVC stands for **Model-View-Controller**. It is a software architectural pattern that separates an application into three major parts:
+
+- **Model** — Handles data and the application's data-related logic.
+- **View** — Handles the user interface and presentation.
+- **Controller** — Handles incoming requests and determines what response should be returned.
+
+Laravel follows the MVC architecture to help developers organize applications into separate responsibilities.
+
+### Why Laravel Uses MVC
+
+Laravel uses MVC because separating application responsibilities makes projects easier to develop, understand, maintain, and expand.
+
+Instead of placing routing logic, application logic, HTML, and presentation code in one file, Laravel provides dedicated locations for each responsibility.
+
+In this project:
+
+- Routes are defined in `routes/web.php`.
+- Request-handling logic is located in `CompanyProfileController.php`.
+- User interface pages are implemented as Blade views.
+- Reusable navigation and footer elements are implemented as Blade components.
+
+### Advantages of MVC
+
+Using MVC provides several advantages:
+
+1. **Separation of concerns**  
+   Different parts of the application have different responsibilities.
+
+2. **Maintainability**  
+   Developers can modify one part of an application without unnecessarily affecting other parts.
+
+3. **Reusability**  
+   Components and layouts can be reused across multiple pages.
+
+4. **Organization**  
+   Files are organized according to their purpose.
+
+5. **Scalability**  
+   The structure can support larger applications with more routes, controllers, models, and views.
+
+### Laravel Request Flow
+
+The simplified request flow used by this project is:
 
 ```text
-app/
-├── Http/
-├── Models/
-└── Providers/
-
-resources/
-├── css/
-├── js/
-└── views/
-    ├── components/
-    ├── layouts/
-    └── pages/
-
-routes/
-└── web.php
-
-public/
-└── images/
-
-screenshots/
+Client / Browser
+       │
+       ▼
+Route (web.php)
+       │
+       ▼
+CompanyProfileController
+       │
+       ▼
+Blade View
+       │
+       ▼
+HTML Response
+       │
+       ▼
+Browser
 ````
 
-### Blade Views
+For example, when a visitor requests `/about`, Laravel matches the URL to the appropriate route, sends the request to the controller method, and the controller returns the About Blade view. Laravel then renders the view into an HTML response that is displayed in the browser.
 
-The website uses Blade templates to organize reusable layouts and individual pages.
+---
+
+## 5. Laravel Routing
+
+### What is Routing?
+
+Routing determines how an application responds to a particular URL and HTTP request.
+
+Laravel routes are commonly defined in:
+
+```text
+routes/web.php
+```
+
+For this project, routes connect the four required company profile pages to the corresponding controller methods.
+
+### GET Requests
+
+The website primarily uses `GET` requests because the four main pages are pages that visitors retrieve from the server.
+
+The main routes are:
+
+```text
+GET /
+GET /about
+GET /services
+GET /contact
+```
+
+### Route Definitions
+
+The routes connect URLs to methods in the company profile controller.
+
+Example:
+
+```php
+use App\Http\Controllers\CompanyProfileController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [CompanyProfileController::class, 'home']);
+Route::get('/about', [CompanyProfileController::class, 'about']);
+Route::get('/services', [CompanyProfileController::class, 'services']);
+Route::get('/contact', [CompanyProfileController::class, 'contact']);
+```
+
+These routes allow the browser to request the different pages while keeping the request-handling logic inside the controller.
+
+### Named Routes
+
+Laravel also supports named routes, which allow routes to be referenced using a name rather than directly depending on a URL.
+
+Although this project primarily uses URL generation such as:
+
+```blade
+{{ url('/services') }}
+```
+
+named routes are useful in larger applications because URLs can be changed without requiring every link to be manually updated.
+
+### Route Screenshot
+
+![Route Definitions](screenshots/route-definitions.png)
+
+---
+
+## 6. Controllers
+
+### Purpose of Controllers
+
+Controllers act as an intermediary between incoming requests and the application's views or other application logic.
+
+Instead of placing page-handling logic directly inside the route definitions, the project uses a dedicated controller:
+
+```text
+app/Http/Controllers/CompanyProfileController.php
+```
+
+The controller handles the four major company profile pages.
+
+### Controller Methods
+
+The controller contains methods for:
+
+```text
+home()
+about()
+services()
+contact()
+```
+
+Each method returns the corresponding Blade view.
+
+Example:
+
+```php
+public function home()
+{
+    return view('pages.home');
+}
+
+public function about()
+{
+    return view('pages.about');
+}
+
+public function services()
+{
+    return view('pages.services');
+}
+
+public function contact()
+{
+    return view('pages.contact');
+}
+```
+
+This keeps the route definitions simple while giving the controller responsibility for determining which view should be returned.
+
+### Benefits of Controllers
+
+Controllers provide:
+
+* Cleaner route definitions
+* Separation of request handling from presentation
+* Better organization
+* Easier maintenance
+* A structure that can be expanded when application logic becomes more complex
+
+### Controller Screenshot
+
+![Company Controller](screenshots/company-controller.png)
+
+---
+
+## 7. Blade Templating Engine
+
+Blade is Laravel's templating engine. It allows developers to create PHP-based views while providing convenient syntax for layouts, sections, components, and other template features.
+
+The project's Blade views are located inside:
 
 ```text
 resources/views/
-├── components/
-│   ├── footer.blade.php
-│   └── navbar.blade.php
-│
-├── layouts/
-│   └── app.blade.php
-│
-└── pages/
-    ├── home.blade.php
-    ├── about.blade.php
-    ├── services.blade.php
-    └── contact.blade.php
 ```
 
----
+### Blade Layouts
 
-## Reusable Blade Components
-
-The project uses reusable Blade components to avoid duplicating common website elements.
-
-### Navbar
-
-```text
-resources/views/components/navbar.blade.php
-```
-
-The navigation component contains:
-
-* AURA & HORLOGE branding
-* Home navigation
-* About navigation
-* Services navigation
-* Contact navigation
-* Active navigation state
-
-### Footer
-
-```text
-resources/views/components/footer.blade.php
-```
-
-The footer contains the site's closing branding and company information and is reused throughout the pages.
-
----
-
-## Main Layout
-
-The main application layout is located at:
+The main shared layout is:
 
 ```text
 resources/views/layouts/app.blade.php
 ```
 
-The layout provides the shared HTML structure for the website and includes:
+This layout provides the common HTML structure used across the website, including:
 
 * Document metadata
 * Page title
@@ -184,13 +279,27 @@ The layout provides the shared HTML structure for the website and includes:
 * Footer
 * Vite asset loading
 
-Individual pages extend this layout using Blade's `@extends` and `@section` directives.
+Individual pages extend the main layout rather than duplicating the entire HTML structure.
+
+### `@extends`
+
+`@extends` allows a Blade page to inherit another Blade layout.
 
 Example:
 
 ```blade
 @extends('layouts.app')
+```
 
+The About, Services, and Contact pages use the shared application layout.
+
+### `@section`
+
+`@section` defines content that will be inserted into a section provided by the layout.
+
+Example:
+
+```blade
 @section('title', 'About — AURA & HORLOGE')
 
 @section('content')
@@ -200,75 +309,163 @@ Example:
 @endsection
 ```
 
+### `@yield`
+
+`@yield` defines a location in the main layout where content from a child view will be displayed.
+
+For example:
+
+```blade
+<title>@yield('title', 'AURA & HORLOGE')</title>
+```
+
+The value supplied by each page's `@section('title', ...)` is displayed in this location.
+
+### `@include`
+
+Blade's `@include` directive allows reusable Blade files to be inserted into another view.
+
+The project uses reusable components for the navigation bar and footer so that the same interface elements do not have to be manually duplicated on every page.
+
+Example:
+
+```blade
+@include('components.navbar')
+```
+
+and:
+
+```blade
+@include('components.footer')
+```
+
+### Reusable Navbar
+
+The navigation component is located at:
+
+```text
+resources/views/components/navbar.blade.php
+```
+
+It contains:
+
+* AURA & HORLOGE branding
+* Home navigation
+* About navigation
+* Services navigation
+* Contact navigation
+* Active navigation state
+
+### Reusable Footer
+
+The footer component is located at:
+
+```text
+resources/views/components/footer.blade.php
+```
+
+It provides shared closing content and company information throughout the website.
+
+### Blade Layout Screenshot
+
+![Blade Layout](screenshots/blade-layout.png)
+
 ---
 
-## Routing
+## 8. Laravel Folder Structure
 
-The website routes are defined in:
+The project follows Laravel's standard application structure.
+
+```text
+week03-company-profile/
+│
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   ├── Models/
+│   └── Providers/
+│
+├── bootstrap/
+│
+├── config/
+│
+├── public/
+│   └── images/
+│
+├── resources/
+│   ├── css/
+│   ├── js/
+│   └── views/
+│       ├── components/
+│       ├── layouts/
+│       └── pages/
+│
+├── routes/
+│   └── web.php
+│
+├── screenshots/
+│
+├── documentation/
+│
+├── storage/
+│
+├── tests/
+│
+├── .env.example
+├── artisan
+├── composer.json
+├── package.json
+├── README.md
+└── vite.config.js
+```
+
+### `app/`
+
+The `app/` directory contains the main application code.
+
+The controller used by this project is located inside:
+
+```text
+app/Http/Controllers/
+```
+
+The project also contains the standard `Models` and `Providers` directories provided by Laravel.
+
+### `routes/`
+
+The `routes/` directory contains the application's route definitions.
+
+This project primarily uses:
 
 ```text
 routes/web.php
 ```
 
-The routes connect the website URLs to the company profile controller and corresponding Blade views.
+for browser-accessible web routes.
 
-Main routes include:
+### `resources/`
 
-```text
-/
- /about
- /services
- /contact
-```
+The `resources/` directory contains frontend resources such as CSS, JavaScript, and Blade views.
 
----
-
-## Controller
-
-The company profile controller is located in:
+This project uses:
 
 ```text
-app/Http/Controllers/CompanyProfileController.php
+resources/css/
+resources/js/
+resources/views/
 ```
 
-The controller handles the main company profile pages and returns the appropriate Blade views.
+### `public/`
 
----
+The `public/` directory contains files that can be directly accessed by the browser.
 
-## Frontend Assets
-
-The main stylesheet is located at:
-
-```text
-resources/css/app.css
-```
-
-The project uses Vite for frontend asset development and compilation.
-
-The project configuration is defined in:
-
-```text
-vite.config.js
-```
-
-Node and NPM dependencies are managed through:
-
-```text
-package.json
-package-lock.json
-```
-
----
-
-## Images
-
-Website images are stored in:
+The project stores its website images in:
 
 ```text
 public/images/
 ```
 
-Current project assets include:
+Current assets include:
 
 ```text
 public/images/
@@ -276,11 +473,25 @@ public/images/
 └── hero-watch.png
 ```
 
-These assets are used by the website's visual sections.
+### `bootstrap/`
+
+The `bootstrap/` directory contains Laravel's framework bootstrapping files and cached framework-related files.
+
+It helps initialize the application before requests are processed.
+
+### `config/`
+
+The `config/` directory contains the application's configuration files, including settings related to the application, database, filesystem, mail, services, and other Laravel features.
+
+### Project Structure Screenshot
+
+![VS Code Project](screenshots/vscode-project.png)
+
+![Laravel Folder Structure](screenshots/laravel-folder-structure.png)
 
 ---
 
-## Screenshots
+## 9. Screenshots
 
 Screenshots documenting the development process and final website are shown below.
 
@@ -359,6 +570,140 @@ Screenshots documenting the development process and final website are shown belo
 ### GitHub Repository
 
 ![GitHub Repository](screenshots/github-repository.png)
+
+---
+
+## 10. Problems Encountered
+
+Several challenges were encountered while developing the project.
+
+### Problem 1 — Character Encoding Display in the Terminal
+
+One issue encountered during development was the display of special characters such as the em dash (`—`) when viewing Blade files through the Windows PowerShell terminal.
+
+In some terminal output, the em dash appeared as corrupted characters such as:
+
+```text
+â€”
+```
+
+However, the actual Blade files contained the intended character, and the rendered website displayed the em dash correctly.
+
+This indicated that the issue was related to how the terminal displayed the file contents rather than an actual problem with the website.
+
+### Problem 2 — Managing Large CSS Changes
+
+The original Laravel project contained the default styling. The company profile required a completely different visual identity based on a dark luxury aesthetic with gold accents and custom typography.
+
+The project therefore required substantial changes to:
+
+```text
+resources/css/app.css
+```
+
+The stylesheet became significantly larger as custom layouts, responsive behavior, typography, buttons, cards, sections, navigation, footer styling, and CSS-based service icons were added.
+
+### Problem 3 — Managing Multiple Git Changes
+
+As the website developed, several files were modified or newly created at the same time. This included Blade pages, the main CSS file, navigation components, images, screenshots, and the README.
+
+Git repeatedly showed modified and untracked files that had to be reviewed and staged correctly before committing.
+
+This required checking:
+
+```bash
+git status
+```
+
+and reviewing changes with commands such as:
+
+```bash
+git diff
+```
+
+before creating commits.
+
+---
+
+## 11. Solutions
+
+### Solution 1 — Verifying the Character Encoding Issue
+
+Instead of changing the actual website content unnecessarily, the file contents and browser output were checked.
+
+The website itself displayed the em dash correctly, confirming that the problem was limited to terminal character rendering.
+
+The actual source files were therefore left unchanged.
+
+### Solution 2 — Organizing the CSS Development
+
+The stylesheet was organized into logical sections covering:
+
+* Global styling
+* Typography
+* Containers
+* Navigation
+* Hero sections
+* Buttons
+* Page sections
+* Service cards
+* Contact forms
+* Footer
+* Responsive layouts
+* CSS-based icons
+
+Custom CSS was used instead of relying on external icon libraries for the service icons.
+
+This allowed the website to maintain a consistent visual identity.
+
+### Solution 3 — Using Git Status, Diff, and Meaningful Commits
+
+Git commands were used to review and organize changes before committing them.
+
+Examples included:
+
+```bash
+git status
+git diff
+git add
+git commit
+git log --oneline
+git push origin main
+```
+
+Major features were committed separately, including the About page, Services and Contact pages, visual refinement, and documentation.
+
+The final repository was pushed successfully to GitHub, and the local `main` branch was synchronized with `origin/main`.
+
+---
+
+## 12. Reflection
+
+Developing the AURA & HORLOGE company profile website helped me understand how Laravel's MVC architecture organizes a web application into separate responsibilities. Before working with Laravel, it was easy to think of a website mainly as HTML, CSS, and links between pages. Through this project, I learned that Laravel provides a structured way to handle a browser request, determine which route should respond, pass the request to a controller, and return a Blade view that becomes the final HTML displayed by the browser.
+
+The most important concept I learned was separation of concerns. Routes should primarily determine where a request should go, controllers should handle request-related logic, and views should focus on presentation. Keeping these responsibilities separate makes the application easier to understand and maintain. For example, the project uses `web.php` for the four main routes, `CompanyProfileController` for the page-handling methods, and separate Blade files for the Home, About, Services, and Contact pages. This organization is much cleaner than placing all of the page content and request logic in a single file.
+
+I also gained a better understanding of how reusable Blade layouts and components reduce duplication. Instead of writing the navigation bar and footer separately on every page, the project uses reusable components and a shared application layout. The individual pages extend the layout using `@extends`, define their content using `@section`, and receive the content through `@yield`. This made it possible to maintain a consistent navigation, footer, metadata structure, and overall page design across the entire website.
+
+Another important lesson was that the architecture is useful beyond a small company profile website. In a larger enterprise system, there may be many different pages, user roles, forms, database operations, and business rules. A structured MVC architecture allows these responsibilities to remain organized as the application grows. Models can handle database-related operations, controllers can coordinate application logic, and views can present the results to users.
+
+Overall, this project gave me practical experience with Laravel routing, controllers, Blade templates, reusable components, project organization, responsive frontend development, and Git version control. More importantly, it helped me understand why frameworks such as Laravel use structured architectures instead of treating every webpage as an independent collection of HTML files. The project showed me how these concepts work together to create a maintainable foundation for larger web applications.
+
+---
+
+## 13. References
+
+Laravel. (n.d.). *Laravel documentation*. [https://laravel.com/docs](https://laravel.com/docs)
+
+MDN Web Docs. (n.d.). *HTML: HyperText Markup Language*. Mozilla. [https://developer.mozilla.org/en-US/docs/Web/HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+
+MDN Web Docs. (n.d.). *CSS: Cascading Style Sheets*. Mozilla. [https://developer.mozilla.org/en-US/docs/Web/CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+PHP Documentation Group. (n.d.). *PHP manual*. [https://www.php.net/docs.php](https://www.php.net/docs.php)
+
+Vite. (n.d.). *Vite documentation*. [https://vite.dev/guide/](https://vite.dev/guide/)
+
+---
 
 ## Installation
 
@@ -439,17 +784,19 @@ Major development milestones include:
 6. About page
 7. Services and Contact pages
 8. Final visual and CSS refinement
+9. Project documentation and screenshots
 ```
 
-Git was used throughout development to track changes and maintain separate commits for major features and improvements.
+Git was used throughout development to track changes and maintain meaningful commits for major features and improvements.
 
 ---
 
 ## Git Commit History
 
-The project currently contains the following major commits:
+The project contains the following major commits:
 
 ```text
+docs: add project documentation and screenshots
 style: refine company profile design
 feat: add services and contact pages
 feat: add about page
@@ -460,23 +807,105 @@ feat: add company profile controller and routes
 feat: create Laravel project
 ```
 
+The project satisfies the Week 3 requirement of maintaining at least eight meaningful Git commits. The GitHub repository was also updated through the `main` branch.
+
+---
+
+## Technologies Used
+
+* **Laravel**
+* **PHP**
+* **Blade Templates**
+* **CSS**
+* **Vite**
+* **Node.js**
+* **NPM**
+* **Git**
+* **GitHub**
+
+### Frontend
+
+The website uses custom CSS for its visual design.
+
+Typography includes:
+
+* Cormorant Garamond
+* Inter
+
+The design uses a dark luxury color palette with:
+
+* Black
+* Charcoal
+* Ivory
+* Gold accents
+
+Custom CSS was also used to create the service icons without requiring a separate icon library.
+
+---
+
+## Features
+
+### Home Page
+
+* Luxury hero section
+* Company introduction
+* Featured services
+* Call-to-action sections
+* Responsive layout
+* Custom visual design
+
+### About Page
+
+* Company history
+* Mission and vision
+* Core values
+* Team section
+* Closing call-to-action
+
+### Services Page
+
+The website presents six services:
+
+1. Private Watch Brokerage
+2. Bespoke Handbag Tailoring
+3. Forensic Authentication
+4. Watch Movement Servicing
+5. Handbag Restoration Spa
+6. Consignment & Liquidity
+
+Each service contains an icon, title, description, and visual styling.
+
+### Contact Page
+
+* Atelier address
+* Email information
+* Phone number
+* Social media information
+* Private inquiry form
+* Inquiry category selection
+
+The contact form is implemented as a **UI-only form**, as required by the activity.
+
 ---
 
 ## Project Purpose
 
-This project was created as part of **ITST 302** to demonstrate the development of a Laravel-based company profile website.
+This project was created as part of **ITST 302 – Client-Server Technologies, Week 3** to demonstrate the development of a Laravel-based company profile website.
 
-It demonstrates the use of:
+The project demonstrates:
 
 * Laravel project structure
+* MVC architecture
 * Routing
 * Controllers
-* Blade templates
+* Blade templating
+* Reusable layouts
 * Reusable components
-* Layout inheritance
-* CSS styling
+* Responsive navigation and footer
+* Custom CSS styling
 * Vite and NPM
 * Git version control
+* GitHub documentation
 
 ---
 
@@ -484,11 +913,13 @@ It demonstrates the use of:
 
 **Christian Joseph Aquino**
 
-BSIT — 3A
-ITST 302
+**BSIT — 3A**
+
+**ITST 302 – Client-Server Technologies**
 
 ---
 
 ## License
 
 This project was created for academic purposes.
+
