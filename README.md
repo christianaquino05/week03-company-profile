@@ -69,7 +69,7 @@ Instead of placing routing logic, application logic, HTML, and presentation code
 In this project:
 
 - Routes are defined in `routes/web.php`.
-- Request-handling logic is located in `CompanyProfileController.php`.
+- Request-handling logic is located in `CompanyController.php`.
 - User interface pages are implemented as Blade views.
 - Reusable navigation and footer elements are implemented as Blade components.
 
@@ -103,7 +103,7 @@ Client / Browser
 Route (web.php)
        │
        ▼
-CompanyProfileController
+CompanyController
        │
        ▼
 Blade View
@@ -113,11 +113,18 @@ HTML Response
        │
        ▼
 Browser
-````
+```
 
 For example, when a visitor requests `/about`, Laravel matches the URL to the appropriate route, sends the request to the controller method, and the controller returns the About Blade view. Laravel then renders the view into an HTML response that is displayed in the browser.
 
+### Architecture Diagram
+
+The following diagram illustrates the Laravel MVC request flow used in this project, from the initial browser request to the final HTML response.
+
+![Laravel MVC Architecture Diagram](documentation/architecture-diagram.png)
+
 ---
+
 
 ## 5. Laravel Routing
 
@@ -153,13 +160,13 @@ The routes connect URLs to methods in the company profile controller.
 Example:
 
 ```php
-use App\Http\Controllers\CompanyProfileController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [CompanyProfileController::class, 'home']);
-Route::get('/about', [CompanyProfileController::class, 'about']);
-Route::get('/services', [CompanyProfileController::class, 'services']);
-Route::get('/contact', [CompanyProfileController::class, 'contact']);
+Route::get('/', [CompanyController::class, 'home']);
+Route::get('/about', [CompanyController::class, 'about']);
+Route::get('/services', [CompanyController::class, 'services']);
+Route::get('/contact', [CompanyController::class, 'contact']);
 ```
 
 These routes allow the browser to request the different pages while keeping the request-handling logic inside the controller.
@@ -191,7 +198,7 @@ Controllers act as an intermediary between incoming requests and the application
 Instead of placing page-handling logic directly inside the route definitions, the project uses a dedicated controller:
 
 ```text
-app/Http/Controllers/CompanyProfileController.php
+app/Http/Controllers/CompanyController.php
 ```
 
 The controller handles the four major company profile pages.
@@ -567,6 +574,20 @@ Screenshots documenting the development process and final website are shown belo
 
 ![Contact Page - 2](screenshots/contact-page2.png)
 
+### Interface Components
+
+#### Navigation Bar
+
+![Navigation Bar](screenshots/navbar.png)
+
+#### Footer
+
+![Footer](screenshots/footer.png)
+
+### Browser Output
+
+![Browser Output](screenshots/browser-output.png)
+
 ### GitHub Repository
 
 ![GitHub Repository](screenshots/github-repository.png)
@@ -681,7 +702,7 @@ The final repository was pushed successfully to GitHub, and the local `main` bra
 
 Developing the AURA & HORLOGE company profile website helped me understand how Laravel's MVC architecture organizes a web application into separate responsibilities. Before working with Laravel, it was easy to think of a website mainly as HTML, CSS, and links between pages. Through this project, I learned that Laravel provides a structured way to handle a browser request, determine which route should respond, pass the request to a controller, and return a Blade view that becomes the final HTML displayed by the browser.
 
-The most important concept I learned was separation of concerns. Routes should primarily determine where a request should go, controllers should handle request-related logic, and views should focus on presentation. Keeping these responsibilities separate makes the application easier to understand and maintain. For example, the project uses `web.php` for the four main routes, `CompanyProfileController` for the page-handling methods, and separate Blade files for the Home, About, Services, and Contact pages. This organization is much cleaner than placing all of the page content and request logic in a single file.
+The most important concept I learned was separation of concerns. Routes should primarily determine where a request should go, controllers should handle request-related logic, and views should focus on presentation. Keeping these responsibilities separate makes the application easier to understand and maintain. For example, the project uses `web.php` for the four main routes, `CompanyController` for the page-handling methods, and separate Blade files for the Home, About, Services, and Contact pages. This organization is much cleaner than placing all of the page content and request logic in a single file.
 
 I also gained a better understanding of how reusable Blade layouts and components reduce duplication. Instead of writing the navigation bar and footer separately on every page, the project uses reusable components and a shared application layout. The individual pages extend the layout using `@extends`, define their content using `@section`, and receive the content through `@yield`. This made it possible to maintain a consistent navigation, footer, metadata structure, and overall page design across the entire website.
 
